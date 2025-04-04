@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp.gradle.plugin)
+    alias(libs.plugins.hilt.plugin)
 }
 
 android {
@@ -18,6 +20,10 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -28,19 +34,23 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
     }
 }
 
-dependencies {
+hilt {
+    enableAggregatingTask = false
+}
 
+dependencies {
+    implementation(libs.compose.lifecycle.runtime)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -56,4 +66,28 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // navigation
+    implementation(libs.navigation.ui.ktx)
+    implementation(libs.navigation.compose)
+    implementation(libs.navigation.fragment.ktx)
+
+    // hilt
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.hilt.compose.navigation)
+    implementation(libs.hilt.android)
+
+    // retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.moshi)
+
+    // okhttp
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging.interceptor)
+
+    // moshi
+    implementation(libs.moshi.kotlin)
+    implementation(libs.moshi.kotlin.codegen)
+    implementation(libs.moshi.kotlin.adapters)
+
 }
