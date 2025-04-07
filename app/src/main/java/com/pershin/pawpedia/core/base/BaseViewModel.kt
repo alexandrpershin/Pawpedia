@@ -1,4 +1,5 @@
 package com.pershin.pawpedia.core.base
+
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -26,7 +27,7 @@ abstract class BaseViewModel<S : BaseUiState, E : BaseUiEvent>() : ViewModel() {
         _uiState.update { updateBlock(it) }
     }
 
- }
+}
 
 interface BaseUiState
 

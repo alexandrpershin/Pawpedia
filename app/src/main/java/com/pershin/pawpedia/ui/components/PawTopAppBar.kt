@@ -49,7 +49,7 @@ fun PawTopAppBar(
 
 data class NavigationButton(
     val icon: ImageVector = Icons.AutoMirrored.Filled.ArrowBack,
-    val onClick: () -> Unit
+    val onClick: () -> Unit,
 )
 
 @Preview

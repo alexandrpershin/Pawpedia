@@ -72,6 +72,9 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.navigation.fragment.ktx)
 
+    // coil
+    implementation(libs.coil)
+
     // hilt
     ksp(libs.hilt.android.compiler)
     implementation(libs.hilt.compose.navigation)
@@ -90,4 +93,16 @@ dependencies {
     implementation(libs.moshi.kotlin.codegen)
     implementation(libs.moshi.kotlin.adapters)
 
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinCoroutinesTest)
+    testImplementation(libs.extJUnit)
+    testImplementation(libs.junit5Api)
+    testImplementation(libs.junit5Engine)
+    testImplementation(libs.junit5Params)
+    testImplementation(libs.kotlintest.runner.junit5)
+    testImplementation (libs.kotlin.test.junit)
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

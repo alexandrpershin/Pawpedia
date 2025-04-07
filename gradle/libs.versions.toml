@@ -5,16 +5,23 @@ coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+kotlinTestJunit = "1.9.10"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.10.1"
 composeBom = "2024.04.01"
 hiltComposeNavigationVersion = "1.2.0"
 hiltVersion = "2.53.1"
+coilVersion = "2.7.0"
 moshiVersion = "1.15.0"
 okhttpVersion = "5.0.0-alpha.14"
 retrofitVersion = "2.11.0"
 navigationVersion = "2.4.2"
 kspVersion = "2.1.10-1.0.31"
+mockkVersion = "1.13.3"
+coroutinesVersion = "1.6.4"
+junit5Version = "5.10.0"
+extJUnitVersion = "1.1.5"
+kotlintestRunnerJunit5Version = "3.1.9"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +41,14 @@ androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-man
 androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlinTestJunit" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
+kotlinCoroutinesTest = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutinesVersion" }
+junit5Api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit5Version" }
+junit5Engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit5Version" }
+junit5Params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit5Version" }
+extJUnit = { module = "androidx.test.ext:junit", version.ref = "extJUnitVersion" }
+kotlintest-runner-junit5 = { module = "io.kotlintest:kotlintest-runner-junit5", version.ref = "kotlintestRunnerJunit5Version" }
 
 # Hilt
 hilt_android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
@@ -53,6 +68,9 @@ retrofit_converter_moshi = { group = "com.squareup.retrofit2", name = "converter
 moshi_kotlin = { group = "com.squareup.moshi", name = "moshi-kotlin", version.ref = "moshiVersion" }
 moshi_kotlin_codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshiVersion" }
 moshi_kotlin_adapters = { group = "com.squareup.moshi", name = "moshi-adapters", version.ref = "moshiVersion" }
+
+# Coil
+coil = { group = "io.coil-kt", name = "coil-compose", version.ref = "coilVersion" }
 
 # Okhttp
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttpVersion" }

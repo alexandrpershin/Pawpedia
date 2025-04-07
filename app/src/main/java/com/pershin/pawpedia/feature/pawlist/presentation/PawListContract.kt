@@ -13,17 +13,23 @@ interface PawListContract {
     data class UiState(
         val error: String?,
         val loading: Boolean,
-        val items: List<String>
+        val items: List<BreedUiModel>,
     ) : BaseUiState {
-        data class Breed(
-            val image: String,
-            val name: String,
-            val parentName: String?
-        )
+
+        sealed class BreedUiModel {
+            data class Parent(
+                val name: String,
+            ) : BreedUiModel()
+
+            data class Child(
+                val parentName: String,
+                val name: String,
+            ) : BreedUiModel()
+        }
     }
 
     sealed interface UiEvents : BaseUiEvent {
-        data object OnItemClick : UiEvents
+        data class OnItemClick(val clickedIndex: Int) : UiEvents
         data object OnRetryClick : UiEvents
     }
 }

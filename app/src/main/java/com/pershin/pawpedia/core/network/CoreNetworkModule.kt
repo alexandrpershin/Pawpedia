@@ -2,8 +2,8 @@ package com.pershin.pawpedia.core.network
 
 import android.content.Context
 import com.pershin.pawpedia.BuildConfig
-import com.pershin.pawpedia.core.PawBreedRepository
-import com.pershin.pawpedia.core.PawBreedRepositoryImpl
+import com.pershin.pawpedia.feature.common.repository.PawBreedRepository
+import com.pershin.pawpedia.feature.common.repository.PawBreedRepositoryImpl
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -16,14 +16,8 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.security.KeyManagementException
-import java.security.NoSuchAlgorithmException
-import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import javax.net.ssl.SSLContext
-import javax.net.ssl.TrustManager
-import javax.net.ssl.X509TrustManager
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -48,14 +42,16 @@ class CoreNetworkModule {
 
     @Provides
     @Singleton
-    fun providePawpediaApi(retrofit: Retrofit): PawpediaApi = retrofit.create(PawpediaApi::class.java)
+    fun providePawpediaApi(retrofit: Retrofit): PawpediaApi =
+        retrofit.create(PawpediaApi::class.java)
 
     @Provides
     @Singleton
-    fun provideRetrofit(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): Retrofit = retrofitBuilder
-        .baseUrl(BASE_URL)
-        .client(okHttpClient)
-        .build()
+    fun provideRetrofit(retrofitBuilder: Retrofit.Builder, okHttpClient: OkHttpClient): Retrofit =
+        retrofitBuilder
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .build()
 
 
     @Provides
@@ -70,7 +66,8 @@ class CoreNetworkModule {
 
     @Provides
     @Singleton
-    fun providePawBreedRepository(api: PawpediaApi): PawBreedRepository = PawBreedRepositoryImpl(api)
+    fun providePawBreedRepository(api: PawpediaApi): PawBreedRepository =
+        PawBreedRepositoryImpl(api)
 
     companion object {
         private const val BASE_URL: String = "https://dog.ceo/"
